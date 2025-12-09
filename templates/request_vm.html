@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Richiedi VM</title>
+    <script>
+        function updateOptions() {
+            var criterio = document.getElementById("criterio").value;
+
+            // nascondi tutti
+            document.getElementById("potenza-options").style.display = "none";
+            document.getElementById("utilizzo-options").style.display = "none";
+
+            // mostra solo quello selezionato
+            if (criterio === "potenza") {
+                document.getElementById("potenza-options").style.display = "block";
+            } else if (criterio === "utilizzo") {
+                document.getElementById("utilizzo-options").style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2>Richiedi una nuova macchina virtuale</h2>
+
+<form method="POST">
+
+    <label>Seleziona il criterio:</label><br>
+    <select id="criterio" name="criterio" onchange="updateOptions()" required>
+        <option value="" disabled selected>-- scegli --</option>
+        <option value="potenza">Potenza</option>
+        <option value="utilizzo">Utilizzo</option>
+    </select>
+
+    <br><br>
+
+    <!-- OPZIONI PER POTENZA -->
+    <div id="potenza-options" style="display:none;">
+        <label>Seleziona la potenza:</label><br>
+        <select name="tipo_vm">
+            <option value="bronze">Bronze</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+        </select>
+    </div>
+
+    <!-- OPZIONI PER UTILIZZO -->
+    <div id="utilizzo-options" style="display:none;">
+        <label>Seleziona l'utilizzo:</label><br>
+        <select name="tipo_vm">
+            <option value="servizio">Servizio</option>
+            <option value="generico">Generico</option>
+            <option value="desktop">Desktop</option>
+        </select>
+    </div>
+
+    <br><br>
+    <button type="submit">Invia richiesta</button>
+
+</form>
+
+<br>
+<a href="/dashboard">Torna alla dashboard</a>
+
+</body>
+</html>
