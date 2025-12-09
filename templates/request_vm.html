@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Richiedi VM</title>
-    <script>
-        function updateOptions() {
-            var criterio = document.getElementById("criterio").value;
+{% extends "base.html" %}
 
-            // nascondi tutti
-            document.getElementById("potenza-options").style.display = "none";
-            document.getElementById("utilizzo-options").style.display = "none";
+{% block title %}Richiedi VM{% endblock %}
 
-            // mostra solo quello selezionato
-            if (criterio === "potenza") {
-                document.getElementById("potenza-options").style.display = "block";
-            } else if (criterio === "utilizzo") {
-                document.getElementById("utilizzo-options").style.display = "block";
-            }
-        }
-    </script>
-</head>
-<body>
+{% block content %}
 
 <h2>Richiedi una nuova macchina virtuale</h2>
 
@@ -34,7 +17,6 @@
 
     <br><br>
 
-    <!-- OPZIONI PER POTENZA -->
     <div id="potenza-options" style="display:none;">
         <label>Seleziona la potenza:</label><br>
         <select name="tipo_vm">
@@ -44,7 +26,6 @@
         </select>
     </div>
 
-    <!-- OPZIONI PER UTILIZZO -->
     <div id="utilizzo-options" style="display:none;">
         <label>Seleziona l'utilizzo:</label><br>
         <select name="tipo_vm">
@@ -59,8 +40,12 @@
 
 </form>
 
-<br>
-<a href="/dashboard">Torna alla dashboard</a>
+<script>
+    function updateOptions() {
+        var criterio = document.getElementById("criterio").value;
+        document.getElementById("potenza-options").style.display = criterio === "potenza" ? "block" : "none";
+        document.getElementById("utilizzo-options").style.display = criterio === "utilizzo" ? "block" : "none";
+    }
+</script>
 
-</body>
-</html>
+{% endblock %}

@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Conferma Richiesta</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>Richiesta VM ricevuta</h2>
+{% block title %}Conferma richiesta{% endblock %}
 
-<p><strong>Criterio scelto:</strong> {{ criterio }}</p>
-<p><strong>Tipo di macchina:</strong> {{ tipo_vm }}</p>
+{% block content %}
 
-<p>In una fase successiva questa richiesta sarà salvata nel database e visibile all'amministratore.</p>
+<h2>Richiesta VM ricevuta!</h2>
 
-<br>
-<a href="/dashboard">Torna alla dashboard</a>
+<p><strong>Criterio:</strong> {{ criterio }}</p>
+<p><strong>Tipo VM:</strong> {{ tipo_vm }}</p>
 
-</body>
-</html>
+{% endblock %}

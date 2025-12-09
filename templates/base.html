@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Portale VM{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        nav a {
+            margin-right: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav>
+    {% if current_user.is_authenticated %}
+        {% if current_user.role == "user" %}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/request-vm">Richiedi VM</a>
+        {% endif %}
+
+        {% if current_user.role == "admin" %}
+            <a href="/admin/requests">Admin</a>
+        {% endif %}
+
+        <a href="/logout">Logout</a>
+    {% endif %}
+</nav>
+
+<hr>
+
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

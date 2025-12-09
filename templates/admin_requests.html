@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Richieste VM{% endblock %}
+
+{% block content %}
+
+<h2>Richieste in attesa</h2>
+
+{% if richieste|length == 0 %}
+    <p>Nessuna richiesta presente.</p>
+{% else %}
+<table border="1" cellspacing="0" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Utente</th>
+        <th>Criterio</th>
+        <th>Tipo VM</th>
+        <th>Status</th>
+        <th>Data richiesta</th>
+    </tr>
+
+    {% for r in richieste %}
+    <tr>
+        <td>{{ r[0] }}</td>   <!-- id -->
+        <td>{{ r[1] }}</td>   <!-- username -->
+        <td>{{ r[2] }}</td>   <!-- criterio -->
+        <td>{{ r[3] }}</td>   <!-- tipo_vm -->
+        <td>{{ r[4] }}</td>   <!-- status -->
+        <td>{{ r[5] }}</td>   <!-- created_at -->
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

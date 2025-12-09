@@ -1,5 +1,11 @@
-<h2>Benvenuto nella dashboard!</h2>
+{% extends "base.html" %}
 
-<a href="/request-vm">Richiedi una nuova macchina</a><br><br>
-<a href="/logout">Logout</a>
-<p>Utente loggato: {{ current_user.id }}</p>
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<h2>Benvenuto {{ current_user.username }}!</h2>
+
+<p>Ruolo: {{ current_user.role }}</p>
+
+{% endblock %}
