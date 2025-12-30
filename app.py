@@ -9,7 +9,6 @@ from models.user import User
 app = Flask(__name__)
 app.secret_key = "supersegreto"
 
-# --- LOGIN SETUP ---
 login_manager = LoginManager()
 login_manager.login_view = "auth.login"
 login_manager.init_app(app)
@@ -21,7 +20,6 @@ def load_user(user_id):
         return User(row[0], row[1], row[2], row[3])
     return None
 
-# --- REGISTRAZIONE BLUEPRINTS ---
 app.register_blueprint(auth)
 app.register_blueprint(vm)
 app.register_blueprint(admin)

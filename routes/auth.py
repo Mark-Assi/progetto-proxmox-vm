@@ -22,12 +22,10 @@ def login():
 
     return render_template("login.html")
 
-
 @auth.route("/dashboard")
 @login_required
 def dashboard():
     return render_template("dashboard.html")
-
 
 @auth.route("/logout")
 def logout():

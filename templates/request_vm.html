@@ -8,44 +8,16 @@
 
 <form method="POST">
 
-    <label>Seleziona il criterio:</label><br>
-    <select id="criterio" name="criterio" onchange="updateOptions()" required>
-        <option value="" disabled selected>-- scegli --</option>
-        <option value="potenza">Potenza</option>
-        <option value="utilizzo">Utilizzo</option>
+    <label>Seleziona la potenza:</label><br>
+    <select name="template_type" required>
+        <option value="Bronze">Bronze</option>
+        <option value="Silver">Silver</option>
+        <option value="Gold">Gold</option>
     </select>
-
-    <br><br>
-
-    <div id="potenza-options" style="display:none;">
-        <label>Seleziona la potenza:</label><br>
-        <select name="tipo_vm">
-            <option value="bronze">Bronze</option>
-            <option value="silver">Silver</option>
-            <option value="gold">Gold</option>
-        </select>
-    </div>
-
-    <div id="utilizzo-options" style="display:none;">
-        <label>Seleziona l'utilizzo:</label><br>
-        <select name="tipo_vm">
-            <option value="servizio">Servizio</option>
-            <option value="generico">Generico</option>
-            <option value="desktop">Desktop</option>
-        </select>
-    </div>
 
     <br><br>
     <button type="submit">Invia richiesta</button>
 
 </form>
-
-<script>
-    function updateOptions() {
-        var criterio = document.getElementById("criterio").value;
-        document.getElementById("potenza-options").style.display = criterio === "potenza" ? "block" : "none";
-        document.getElementById("utilizzo-options").style.display = criterio === "utilizzo" ? "block" : "none";
-    }
-</script>
 
 {% endblock %}

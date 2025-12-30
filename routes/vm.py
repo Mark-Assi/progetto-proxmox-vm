@@ -8,12 +8,10 @@ vm = Blueprint("vm", __name__)
 @login_required
 def request_vm():
     if request.method == "POST":
-        criterio = request.form.get("criterio")
-        tipo_vm = request.form.get("tipo_vm")
+        template_type = request.form.get("template_type")
 
-        # salvarla nel DB
-        create_request(current_user.id, criterio, tipo_vm)
+        create_request(current_user.id, template_type)
 
-        return render_template("confirm_vm.html", criterio=criterio, tipo_vm=tipo_vm)
+        return render_template("confirm_vm.html", template_type=template_type)
 
     return render_template("request_vm.html")

@@ -13,20 +13,27 @@
     <tr>
         <th>ID</th>
         <th>Utente</th>
-        <th>Criterio</th>
         <th>Tipo VM</th>
         <th>Status</th>
         <th>Data richiesta</th>
+        <th>Azioni</th>
     </tr>
 
     {% for r in richieste %}
     <tr>
-        <td>{{ r[0] }}</td>   <!-- id -->
-        <td>{{ r[1] }}</td>   <!-- username -->
-        <td>{{ r[2] }}</td>   <!-- criterio -->
-        <td>{{ r[3] }}</td>   <!-- tipo_vm -->
-        <td>{{ r[4] }}</td>   <!-- status -->
-        <td>{{ r[5] }}</td>   <!-- created_at -->
+        <td>{{ r[0] }}</td>   
+        <td>{{ r[1] }}</td>   
+        <td>{{ r[2] }}</td>   
+        <td>{{ r[3] }}</td>   
+        <td>{{ r[4] }}</td>   
+        <td>
+            <form method="post" action="{{ url_for('admin.approve_request', request_id=r[0]) }}" style="display:inline">
+                <button type="submit">Approve</button>
+            </form>
+            <form method="post" action="{{ url_for('admin.reject_request', request_id=r[0]) }}" style="display:inline" onsubmit="return confirm('Confermi rifiuto?');">
+                <button type="submit">Reject</button>
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>
